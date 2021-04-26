@@ -5,7 +5,6 @@ const fs = require('fs');
 
 
 client.commands = new Discord.Collection();
-const commandFolders = fs.readdirSync('./commands');
 client.events = new Discord.Collection();
 
 ['command_handler', 'event_handler'].forEach(handler =>{
@@ -14,5 +13,5 @@ client.events = new Discord.Collection();
 
 
 
-//last line
+// login with token from .env
 client.login(process.env.DISCORD_TOKEN);
