@@ -15,7 +15,7 @@ module.exports =
             {name: 'Illustration for Embed Creation', value: 'Display an Illustration for what a complete embed will look like'},
             {name: 'Cooldown System', value: 'Cooldown for commands'},
             {name: 'More noms', value: 'Add more noms to nom command'},
-            {name: 'Github Repository', value: 'Add bot to Github as Repository (maybe also with commands to update)'},
+            {name: 'Github Repository commands', value: 'Add commands to update Github repository (commit, push and pull)'}, //git status
             //{name: '​\u200b', value: '​\u200b'}, makes the line blank
             {name: 'Syntax Implementation', value: 'If user sends wrong command, tell user what command Syntax is (as shown below)'}
         )
