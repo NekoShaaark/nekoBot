@@ -11,6 +11,7 @@ module.exports =
         .addFields(
             {name: 'archives.embed', value: 'Archived embed'},
             {name: 'archives.collector', value: 'Archived collector'},
+            {name: 'archives.quiz', value: 'Archived quiz system'},
             //{name: '', value: ''},
         )
         .setFooter('Archived commands');

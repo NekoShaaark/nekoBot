@@ -1,11 +1,11 @@
 module.exports = 
 {
-    name: 'quiz',
-    description: "???",
+    name: 'archives.quiz',
+    description: "archived quiz system",
     execute(client, message, args)
     {
 
-        const quiz = require('./quiz.json');
+        const quiz = require('./archives.quiz.json');
         const item = quiz[Math.floor(Math.random() * quiz.length)];
         const filter = response => {
             return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
