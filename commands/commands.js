@@ -10,8 +10,8 @@ module.exports =
         .setColor('#1E90FF')
         .setTitle('Commands:')
         .addFields(
-            {name: 'pat <@user>', value: 'Random Pat (25 different variants)'},
-            {name: 'nom <@user>', value: 'Random Nom (3 different variants)'},
+            {name: 'pat', value: 'Random Pat (25 different variants)'},
+            {name: 'nom', value: 'Random Nom (14 different variants)'},
             {name: 'ping', value: 'Simple pong reply'},
             {name: 'youtube', value: 'Link to shark youtube channel'},
             {name: 'explosion', value: 'Boooom'},

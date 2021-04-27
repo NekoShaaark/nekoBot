@@ -13,11 +13,11 @@ module.exports =
             {name: 'Thumbnail function', value: 'Allow the user to add a thumbnail during embed creation'},
             {name: 'Blank Areas function', value: 'Allow the user to leave fields blank during embed creation'},
             {name: 'Illustration for Embed Creation', value: 'Display an Illustration for what a complete embed will look like'},
+            {name: 'Better Embed Creator', value: 'Make better user experience and make code look little bit neater'},
             {name: 'Cooldown System', value: 'Cooldown for commands'},
-            {name: 'More noms', value: 'Add more noms to nom command'},
-            {name: 'Github Repository commands', value: 'Add commands to update Github repository (commit, push and pull)'}, //git status
+            {name: 'Fortune Cookie Command 🥠', value: 'Opens a fortune cookie and tells a random fortune'},
             //{name: '​\u200b', value: '​\u200b'}, makes the line blank
-            {name: 'Syntax Implementation', value: 'If user sends wrong command, tell user what command Syntax is (as shown below)'}
+            {name: 'Syntax Implementation', value: 'If user sends wrong/invalid command/syntax of command, tell user what command Syntax is (as shown below)'}
         )
         .setImage('https://cdn.discordapp.com/attachments/835483065819725834/835513619009503242/Syntax_implementation.png')
         .setFooter('Created by Shark Co. 🦈')
