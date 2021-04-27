@@ -63,7 +63,7 @@ module.exports =
         // embed for nom
         const Discord = require('discord.js');
         const nomEmbed = new Discord.MessageEmbed()
-        .setColor('#39007D')
+        .setColor('#0F52A3')
         .setAuthor(message.author.username + ' noms ' + userMentioned + nomMessageEnding, message.author.displayAvatarURL())
         .setImage(nomNum)
 

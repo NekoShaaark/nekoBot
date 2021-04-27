@@ -7,7 +7,7 @@ module.exports =
     {
         const Discord = require('discord.js');
         const debuggingEmbed = new Discord.MessageEmbed()
-        .setColor('#83b5ff')
+        .setColor('#67a4fd')
         .setTitle('Things to be done:')
         .addFields(
             {name: 'Thumbnail function', value: 'Allow the user to add a thumbnail during embed creation'},

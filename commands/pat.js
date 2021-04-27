@@ -61,7 +61,7 @@ module.exports =
         // embed for pat
         const Discord = require('discord.js');
         const patEmbed = new Discord.MessageEmbed()
-        .setColor('#39007D')
+        .setColor('#0F52A3')
         .setAuthor(message.author.username + ' gives ' + userMentioned + patMessageEnding, message.author.displayAvatarURL())
         .setImage(patNum)
 
