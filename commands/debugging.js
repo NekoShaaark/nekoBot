@@ -15,7 +15,6 @@ module.exports =
             {name: 'Illustration for Embed Creation', value: 'Display an Illustration for what a complete embed will look like'},
             {name: 'Better Embed Creator', value: 'Make better user experience and make code look little bit neater'},
             {name: 'Cooldown System', value: 'Cooldown for commands'},
-            {name: 'Fortune Cookie Command 🥠', value: 'Opens a fortune cookie and tells a random fortune'},
             //{name: '​\u200b', value: '​\u200b'}, makes the line blank
             {name: 'Syntax Implementation', value: 'If user sends wrong/invalid command/syntax of command, tell user what command Syntax is (as shown below)'}
         )

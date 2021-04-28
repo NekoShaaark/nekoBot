@@ -12,13 +12,14 @@ module.exports =
         .addFields(
             {name: 'pat', value: 'Random Pat (25 different variants)'},
             {name: 'nom', value: 'Random Nom (14 different variants)'},
+            {name: 'fortunecookie 🥠', value: 'Random Fortune (10 different variants)'},
+            {name: 'create.embed', value: 'Create embedded message'},
             {name: 'ping', value: 'Simple pong reply'},
             {name: 'youtube', value: 'Link to shark youtube channel'},
             {name: 'explosion', value: 'Boooom'},
             {name: 'gura', value: 'Gura wink gif'},
             {name: 'conversation', value: 'WIP'},
             {name: 'wink', value: 'Venti wink emoji'},
-            {name: 'create.embed', value: 'Create embedded message'},
             {name: 'help', value: 'Lists all commands'},
             {name: 'exe', value: 'E̸͇̊r̸̛̰r̶̨̍o̵̗̕r̶͍̂'}
             //{name: '', value: ''},

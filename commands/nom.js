@@ -25,17 +25,6 @@ module.exports =
         else if(rating == 12){ nomNum = ('https://cdn.discordapp.com/attachments/835480340364656652/836546528269172756/nom12.gif'); }
         else if(rating == 13){ nomNum = ('https://cdn.discordapp.com/attachments/835480340364656652/836559986888015952/nom13.gif'); }
         else if(rating == 14){ nomNum = ('https://cdn.discordapp.com/attachments/835480340364656652/836577264610705424/senkoNom.gif'); } //senkoNom
-        else if(rating == 15){ nomNum = (''); }
-        else if(rating == 16){ nomNum = (''); }
-        else if(rating == 17){ nomNum = (''); }
-        else if(rating == 18){ nomNum = (''); }
-        else if(rating == 19){ nomNum = (''); }
-        else if(rating == 20){ nomNum = (''); }
-        else if(rating == 21){ nomNum = (''); }
-        else if(rating == 22){ nomNum = (''); }
-        else if(rating == 23){ nomNum = (''); }
-        else if(rating == 24){ nomNum = (''); }
-        else if(rating == 25){ nomNum = (''); }
 
 
         // random number generator
