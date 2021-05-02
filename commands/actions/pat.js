@@ -1,12 +1,24 @@
-module.exports = 
-{
-    name: 'pat',
-    description: "This is a pat command!",
-    cooldown: 2, //cooldown of two seconds
-    execute(client, message, args)
-    {
+const Commando = require('discord.js-commando')
+
+module.exports = class patCommand extends Commando.Command {
+    constructor(client) {
+        super(client, {
+            name: 'pat',
+            aliases: ['headpat'],
+            group: 'actions',
+            memberName: 'pat',
+            description: 'Give the ping or non-pinged user a pat'
+        })
+    }
+
+    // runs the command
+    async run(message){
+
         //random number generator
         var rating = Math.floor(Math.random() * 25) + 1;
+        var patNum
+        var patMessageEnding
+        var userMentioned
         // will pick a random number between 1 and 25
 
         //number determining what pat will be shown
@@ -54,7 +66,7 @@ module.exports =
             userMentioned = message.mentions.users.first().username }
             
         else{ 
-            patPrefix = 'a.pat '
+            var patPrefix = 'a.pat '
             userMentioned = message.content.slice(patPrefix.length); }
 
 
@@ -66,5 +78,6 @@ module.exports =
         .setImage(patNum)
 
         message.channel.send(patEmbed);
+
     }
 }

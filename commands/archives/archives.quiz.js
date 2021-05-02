@@ -1,11 +1,19 @@
-module.exports = 
-{
-    name: 'archives.quiz',
-    description: "archived quiz system",
-    execute(client, message, args)
-    {
+const Commando = require('discord.js-commando')
 
-        const quiz = require('./archives.quiz.json');
+module.exports = class ArchivedQuiz extends Commando.Command{
+    constructor(client){
+        super(client, {
+            name: 'archives.quiz',
+            group: 'archives',
+            memberName: 'archives.quiz',
+            description: 'Archived quiz system'
+        })
+    }
+
+    // runs the command
+    async run(message){
+ 
+        const quiz = require('./quiz.json');
         const item = quiz[Math.floor(Math.random() * quiz.length)];
         const filter = response => {
             return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -19,7 +27,7 @@ module.exports =
                 .catch(collected => {
                     message.channel.send('Looks like nobody got the answer this time.');
                 });
-        });        
+        });       
 
     }
 }

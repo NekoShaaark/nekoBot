@@ -1,12 +1,13 @@
 const Commando = require('discord.js-commando')
 
-module.exports = class ArchivesCommand extends Commando.Command {
-    constructor(client) {
+module.exports = class ArchivesList extends Commando.Command {
+    constructor(client){
         super(client, {
-            name: 'archives',
-            group: 'misc',
-            memberName: 'archives',
-            description: 'shows the archives',
+            name: 'archives.list',
+            aliases: ['archives', 'archiveslist', 'archivedcommands', 'archived.commands'],
+            group: 'archives',
+            memberName: 'archives.list',
+            description: 'Shows a list of archived commands'
         })
     }
 

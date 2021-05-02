@@ -1,6 +1,4 @@
-// const Discord = require('discord.js');
 require('dotenv').config();
-// const client = new Discord.Client();
 const fs = require('fs');
 const path = require('path')
 const Commando = require('discord.js-commando');
@@ -13,26 +11,20 @@ const client = new Commando.CommandoClient({
 
 // bot is online
 client.on('ready', async () => {
-    console.log('Shark is online')
+    console.log('Shark is here to take over da world!')
 
     // registry settings
     client.registry
     .registerGroups([
-        ['misc', 'misc commands'],
-        ['moderation', 'moderation commands'] ])
+        ['actions', 'Actions'],
+        ['misc', 'Misc'],
+        ['dev', 'Development Stuff'],
+        ['archives', 'Archives']
+    ])
     .registerDefaults()
-    .registerCommandsIn(path.join(__dirname, 'cmds'))
+    .registerCommandsIn(path.join(__dirname, 'commands'))
 
 })
-
-
-
-// client.commands = new Discord.Collection();
-// client.events = new Discord.Collection();
-
-// ['command_handler', 'event_handler'].forEach(handler =>{
-//     require(`./handlers/${handler}`)(client, Discord);
-// })
 
 
 

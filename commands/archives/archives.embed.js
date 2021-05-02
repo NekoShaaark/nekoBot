@@ -1,9 +1,17 @@
-module.exports = 
-{
-    name: 'archives.embed',
-    description: "embed example",
-    execute(client, message, args)
-    {
+const Commando = require('discord.js-commando')
+
+module.exports = class ArchivedEmbed extends Commando.Command {
+    constructor(client){
+        super(client, {
+            name: 'archives.embed',
+            group: 'archives',
+            memberName: 'archives.embed',
+            description: 'Archived embed example'
+        })
+    }
+
+    // runs the command
+    async run(message){
         const Discord = require('discord.js');
         const archiveEmbed = new Discord.MessageEmbed()
         .setColor('#39007D')

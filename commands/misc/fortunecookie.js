@@ -1,13 +1,23 @@
-module.exports = 
-{
-    name: 'fortunecookie',
-    aliases: ['cookie',],
-    description: "Gives a random fortune from the fortune cookie of doom cuz why not",
-    execute(client, message, args)
-    {
+const Commando = require('discord.js-commando')
+
+module.exports = class fortuneCookieCommand extends Commando.Command {
+    constructor(client) {
+        super(client, {
+            name: 'fortunecookie',
+            aliases: ['cookie'],
+            group: 'misc',
+            memberName: 'misc',
+            description: 'Gives a random fortune from the fortune cookie of doom cuz why not'
+        })
+    }
+
+
+    // runs the command
+    async run(message){
 
         // random number generator
         var rating = Math.floor(Math.random() * 10) + 1;
+        var fortune
         //will pick a random number between 1 and 10
 
         if(rating == 1){ fortune = ('Lots of cookies is good'); }

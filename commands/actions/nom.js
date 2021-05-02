@@ -1,13 +1,24 @@
-module.exports = 
-{
-    name: 'nom',
-    description: "Is da nom command!",
-    aliases: ['bite'],
-    cooldown: 2, //cooldown of two seconds
-    execute(client, message, args)
-    {
+const Commando = require('discord.js-commando')
+
+module.exports = class nomCommand extends Commando.Command {
+    constructor(client) {
+        super(client, {
+            name: 'nom',
+            aliases: ['bite'],
+            group: 'actions',
+            memberName: 'nom',
+            description: 'Nom the ping or non-pinged user'
+        })
+    }
+
+    // runs the command
+    async run(message){
+
         // random number generator
         var rating = Math.floor(Math.random() * 14) + 1;
+        var nomNum
+        var nomMessageEnding
+        var userMentioned
         //will pick a random number between 1 and 14
 
         // number determining what nom will be shown
@@ -44,7 +55,7 @@ module.exports =
             userMentioned = message.mentions.users.first().username }
                     
         else{ 
-            nomPrefix = 'a.nom '
+            var nomPrefix = 'a.nom '
             userMentioned = message.content.slice(nomPrefix.length); }
 
 
@@ -57,5 +68,6 @@ module.exports =
         .setImage(nomNum)
 
         message.channel.send(nomEmbed);
+
     }
 }

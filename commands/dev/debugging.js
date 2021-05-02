@@ -1,10 +1,19 @@
-module.exports = 
-{
-    name: 'debugging',
-    aliases: ['bugs'],
-    description: "dev command to show what still needs to be done",
-    execute(client, message, args)
-    {
+const Commando = require('discord.js-commando')
+
+module.exports = class debuggingCommand extends Commando.Command {
+    constructor(client) {
+        super(client, {
+            name: 'debugging',
+            aliases: ['bugs', 'debugginglist', 'debugging.list', 'todolist', 'todo'],
+            group: 'dev',
+            memberName: 'debugging',
+            description: 'List of stuff that needs to be done'
+        })
+    }
+
+    // runs the command
+    async run(message){
+
         const Discord = require('discord.js');
         const debuggingEmbed = new Discord.MessageEmbed()
         .setColor('#67a4fd')
@@ -22,5 +31,6 @@ module.exports =
         .setFooter('Created by Shark Co. 🦈')
 
         message.channel.send(debuggingEmbed);
+        
     }
 }

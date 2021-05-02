@@ -1,9 +1,17 @@
-module.exports = 
-{
-    name: 'archives.collector',
-    description: "collector example",
-    execute(client, message, args)
-    {
+const Commando = require('discord.js-commando')
+
+module.exports = class ArchivedCollector extends Commando.Command {
+    constructor(client){
+        super(client, {
+            name: 'archives.collector',
+            group: 'archives',
+            memberName: 'archives.collector',
+            description: 'Archived collector'
+        })
+    }
+
+    // runs the command
+    async run(message){
         // `m` is a message object that will be passed through the filter function
         const filter = m => m.content.includes('') && m.author.id === message.author.id;
         const collector = message.channel.createMessageCollector(filter, { max: 1, time: 10000 });
@@ -27,6 +35,5 @@ module.exports =
         });
 
         message.channel.send('Messages collected testy: ' + messagesCollected)
-
     }
 }
