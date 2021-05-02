@@ -1,5 +1,4 @@
 const Commando = require('discord.js-commando')
-
 module.exports = class fortuneCookieCommand extends Commando.Command {
     constructor(client) {
         super(client, {

@@ -1,5 +1,4 @@
 const Commando = require('discord.js-commando')
-
 module.exports = class guraCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -10,6 +9,7 @@ module.exports = class guraCommand extends Commando.Command {
             description: 'Gura wink gif'
         })
     }
+
 
     // runs the command
     async run(message){

@@ -1,5 +1,4 @@
 const Commando = require('discord.js-commando')
-
 module.exports = class patCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -10,6 +9,7 @@ module.exports = class patCommand extends Commando.Command {
             description: 'Give the ping or non-pinged user a pat'
         })
     }
+
 
     // runs the command
     async run(message){

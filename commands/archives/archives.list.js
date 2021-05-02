@@ -1,5 +1,4 @@
 const Commando = require('discord.js-commando')
-
 module.exports = class ArchivesList extends Commando.Command {
     constructor(client){
         super(client, {
@@ -10,6 +9,7 @@ module.exports = class ArchivesList extends Commando.Command {
             description: 'Shows a list of archived commands'
         })
     }
+
 
     // runs the command
     async run(message){

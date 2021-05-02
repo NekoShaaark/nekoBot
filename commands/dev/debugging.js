@@ -1,5 +1,4 @@
 const Commando = require('discord.js-commando')
-
 module.exports = class debuggingCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -11,6 +10,7 @@ module.exports = class debuggingCommand extends Commando.Command {
         })
     }
 
+    
     // runs the command
     async run(message){
 

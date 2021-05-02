@@ -1,5 +1,4 @@
 const Commando = require('discord.js-commando')
-
 module.exports = class embedCreationCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -9,6 +8,7 @@ module.exports = class embedCreationCommand extends Commando.Command {
             description: 'Embedded message creation command'
         })
     }
+
 
     // runs the command
     async run(message){

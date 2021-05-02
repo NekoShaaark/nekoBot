@@ -1,5 +1,4 @@
 const Commando = require('discord.js-commando')
-
 module.exports = class nomCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -10,6 +9,7 @@ module.exports = class nomCommand extends Commando.Command {
             description: 'Nom the ping or non-pinged user'
         })
     }
+
 
     // runs the command
     async run(message){
