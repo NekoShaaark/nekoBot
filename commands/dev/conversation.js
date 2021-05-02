@@ -6,7 +6,11 @@ module.exports = class ConversationCommand extends Commando.Command {
             aliases: ['con'],
             group: 'dev',
             memberName: 'conversation',
-            description: 'Work in progress command using CleverBot API (maybe)'
+            description: 'Work in progress command using CleverBot API (maybe)',
+            throttling: {
+                usages: 2,
+                duration: 3
+            }
         })
     }
 

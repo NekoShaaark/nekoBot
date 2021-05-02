@@ -6,7 +6,11 @@ module.exports = class nomCommand extends Commando.Command {
             aliases: ['bite'],
             group: 'actions',
             memberName: 'nom',
-            description: 'Nom the ping or non-pinged user'
+            description: 'Nom the ping or non-pinged user',
+            throttling: {
+                usages: 1,
+                duration: 3
+            }
         })
     }
 

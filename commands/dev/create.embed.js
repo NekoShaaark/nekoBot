@@ -5,7 +5,11 @@ module.exports = class embedCreationCommand extends Commando.Command {
             name: 'create.embed',
             group: 'dev',
             memberName: 'create.embed',
-            description: 'Embedded message creation command'
+            description: 'Embedded message creation command',
+            throttling: {
+                usages: 1,
+                duration: 5
+            }
         })
     }
 

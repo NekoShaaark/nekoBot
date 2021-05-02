@@ -6,7 +6,11 @@ module.exports = class patCommand extends Commando.Command {
             aliases: ['headpat'],
             group: 'actions',
             memberName: 'pat',
-            description: 'Give the ping or non-pinged user a pat'
+            description: 'Give the ping or non-pinged user a pat',
+            throttling: {
+                usages: 1,
+                duration: 3
+            }
         })
     }
 
