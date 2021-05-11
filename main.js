@@ -36,6 +36,15 @@ client.on('ready', async () => {
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'commands'))
 
+    client.user.setPresence({  
+        status: 'available',     //sets status button to green   
+        activity: {
+        name: 'Shark Simulator',    //This is the custom text  
+        type: 'PLAYING'     //this is the type (duh). 'watching' would also be an option  
+        }
+       
+       });
+
 })
 
 
