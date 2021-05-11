@@ -2,8 +2,8 @@ require('dotenv').config();
 const fs = require('fs');
 const path = require('path')
 const Commando = require('discord.js-commando');
-const { MongoClient } = require('mongodb')
-const { MongoDBProvider } = require('commando-provider-mongo')
+// const { MongoClient } = require('mongodb')
+// const { MongoDBProvider } = require('commando-provider-mongo')
 
 
 // commando framework import
@@ -11,15 +11,15 @@ const client = new Commando.CommandoClient({
     owner: process.env.OWNER,
     commandPrefix: process.env.PREFIX })
 
-    client.setProvider(
-        MongoClient.connect(process.env.MONGOPATH)
-        .then(client => {
-            return new MongoDBProvider(client, 'nekoBot')
-        })
-        .catch((error) => {
-            console.error(error)
-        })
-    )
+    // client.setProvider(
+    //     MongoClient.connect(process.env.MONGOPATH)
+    //     .then(client => {
+    //         return new MongoDBProvider(client, 'nekoBot')
+    //     })
+    //     .catch((error) => {
+    //         console.error(error)
+    //     })
+    // )
 
 // bot is online
 client.on('ready', async () => {
