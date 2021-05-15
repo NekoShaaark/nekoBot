@@ -31,6 +31,7 @@ client.on('ready', async () => {
         ['actions', 'Actions'],
         ['misc', 'Misc'],
         ['dev', 'Development Stuff'],
+        ['games', 'Games'],
         ['archives', 'Archives']
     ])
     .registerDefaults()
