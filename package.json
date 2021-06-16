@@ -13,6 +13,7 @@
     "discord.js": "^12.5.1",
     "discord.js-commando": "git+https://github.com/discordjs/Commando.git",
     "dotenv": "^8.6.0",
+    "googleapis": "^76.0.0",
     "mongoose": "^5.12.7"
   }
 }
