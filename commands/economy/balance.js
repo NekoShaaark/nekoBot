@@ -23,7 +23,13 @@ module.exports = class exeCommand extends Commando.Command {
         const coins = await economy.getCoins(guildId, userId)
 
         // coin amount
-        message.reply(`That user has ${coins} coins`)
+        //determines if user was pinged or not
+        if(message.mentions.users.first()){
+            const userMentioned = message.mentions.users.first().username
+            message.channel.send(`${userMentioned} has ${coins} coins`) }
+
+        else{
+            message.channel.send(`Ya have ${coins} amount of coins`) }
 
     }
 }
