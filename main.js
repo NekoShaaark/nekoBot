@@ -1,25 +1,12 @@
 require('dotenv').config();
-const fs = require('fs');
-const path = require('path')
+const path = require('path');
 const Commando = require('discord.js-commando');
-// const { MongoClient } = require('mongodb')
-// const { MongoDBProvider } = require('commando-provider-mongo')
 
 
 // commando framework import
 const client = new Commando.CommandoClient({
     owner: process.env.OWNER,
     commandPrefix: process.env.PREFIX })
-
-    // client.setProvider(
-    //     MongoClient.connect(process.env.MONGOPATH)
-    //     .then(client => {
-    //         return new MongoDBProvider(client, 'nekoBot')
-    //     })
-    //     .catch((error) => {
-    //         console.error(error)
-    //     })
-    // )
 
 // bot is online
 client.on('ready', async () => {
@@ -29,23 +16,22 @@ client.on('ready', async () => {
     client.registry
     .registerGroups([
         ['actions', 'Actions'],
+        ['games', 'Games'],
+        ['economy', 'Economy stuff'],
         ['misc', 'Misc'],
         ['dev', 'Development Stuff'],
-        ['games', 'Games'],
         ['archives', 'Archives']
     ])
     .registerDefaults()
     .registerCommandsIn(path.join(__dirname, 'commands'))
 
+    // user presence
     client.user.setPresence({  
-        status: 'available',     //sets status button to green   
+        status: 'available', 
         activity: {
-        name: 'Shark Simulator',    //This is the custom text  
-        type: 'PLAYING'     //this is the type (duh). 'watching' would also be an option  
-        }
-       
-       });
-
+        name: 'Shark Simulator',
+        type: 'PLAYING'
+        }});
 })
 
 
