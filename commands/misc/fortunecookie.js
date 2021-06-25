@@ -3,7 +3,7 @@ module.exports = class fortuneCookieCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'fortunecookie',
-            aliases: ['cookie'],
+            aliases: ['fortune', 'cookie'],
             group: 'misc',
             memberName: 'misc',
             description: 'Gives a random fortune from the fortune cookie of doom cuz why not'

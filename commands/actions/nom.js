@@ -23,11 +23,11 @@ module.exports = class nomCommand extends Commando.Command {
 
 
         //nom link
-        const nomLinks = require('../jsonFolder/actions/nom/nomLinks.json')
+        const nomLinks = require('../../jsonFolder/actions/nom/nomLinks.json')
         const nomNum = nomLinks[Math.floor(Math.random() * nomLinks.length)];
         
         //nom ending
-        const nomEndings = require('../jsonFolder/actions/nom/nomEndings.json')
+        const nomEndings = require('../../jsonFolder/actions/nom/nomEndings.json')
         const nomMessageEnding = nomEndings[Math.floor(Math.random() * nomEndings.length)];
 
 

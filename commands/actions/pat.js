@@ -23,11 +23,11 @@ module.exports = class patCommand extends Commando.Command {
 
 
         //pat link
-        const patLinks = require('../jsonFolder/actions/pat/patLinks.json')
+        const patLinks = require('../../jsonFolder/actions/pat/patLinks.json')
         const patNum = patLinks[Math.floor(Math.random() * patLinks.length)];
         
         //pat ending
-        const patEndings = require('../jsonFolder/actions/pat/patEndings.json')
+        const patEndings = require('../../jsonFolder/actions/pat/patEndings.json')
         const patMessageEnding = patEndings[Math.floor(Math.random() * patEndings.length)];
 
 

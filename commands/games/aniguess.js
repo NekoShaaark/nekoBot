@@ -20,8 +20,8 @@ module.exports = class animeGameCommand extends Commando.Command {
     async run(message){
 
         //rare occurance
-        var rareRating = Math.floor(Math.random() * 50)
-        var ultraRareRating = Math.floor(Math.random() * 200)
+        var rareRating = Math.floor(Math.random() * 50) //2% chance
+        var ultraRareRating = Math.floor(Math.random() * 500) //0.2% chance
 
         //rare collector
         if(rareRating == 1){
