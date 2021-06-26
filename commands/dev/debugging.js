@@ -28,7 +28,6 @@ module.exports = class debuggingCommand extends Commando.Command {
             {name: 'Custom Selection', value: 'Able to pick between different Animes'},
             {name: 'Rarity', value: 'Able to gain more/less points for different card rarities'},
             {name: "Beginner's Illustration", value: "Show a illustration on how to play the game for users that haven't played before"},
-            {name: 'Efficient Code', value: 'Making use of objects (maybe) to make code smaller and run more efficiently'},
             {name: '--------------------------------------------------------------------------------', value: '\u200b'},
             {name: 'Everything else:', value: '-------------------'},
             {name: 'Cloud Hosting', value: 'Cloud Hosting using Google App Engine'},

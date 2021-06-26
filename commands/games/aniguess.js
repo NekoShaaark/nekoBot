@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 const Commando = require('discord.js-commando')
 const economy = require('../../misc/economy')
 module.exports = class animeGameCommand extends Commando.Command {
@@ -19,105 +20,91 @@ module.exports = class animeGameCommand extends Commando.Command {
     // runs the command
     async run(message){
 
-        //rare occurance
+
+        //variables
         var rareRating = Math.floor(Math.random() * 50) //2% chance
         var ultraRareRating = Math.floor(Math.random() * 500) //0.2% chance
 
-        //rare collector
-        if(rareRating == 1){
+        var guessInfo
+        var embedColor
+        var embedTitle
+        var embedDescription
+        const aniguessEmbed = new Discord.MessageEmbed()
+
+        const callTime = Math.floor(Date.now() / 1000)
+        var timeLimit
+        var timeSeconds
+        var pointsMultipler
 
 
-        //--------------------------------------------------------------------------------------------------
-        //rare or ultra rare
-        var guessInfoRare
-        if(ultraRareRating == 1){ guessInfoRare = require('../jsonFolder/games/aniguessInfoUltraRare.json') }
-        else{ guessInfoRare = require('../jsonFolder/games/aniguessInfoRare.json') }
+        //rarity
+        if(ultraRareRating == 1){  //ultraRare
+            guessInfo = require('../../jsonFolder/games/aniguessInfoUltraRare.json') 
+            embedColor = '#7202DF'
+            embedTitle = 'ULTRA RARE CHARACTER APPEARS'
+            embedDescription = '8 seconds is all ya get! Hurry, Hurry!'
+            timeLimit = 11000
+            timeSeconds = 11
+            pointsMultipler = 5
+        }
 
-        // filter
-        const itemRare = guessInfoRare[Math.floor(Math.random() * guessInfoRare.length)];
+
+        else if(rareRating == 1){  //rare
+            guessInfo = require('../../jsonFolder/games/aniguessInfoRare.json') 
+            embedColor = '#FFD700'
+            embedTitle = 'RARE CHARACTER APPEARS'
+            embedDescription = '8 seconds is all ya get! Hurry, Hurry!'
+            timeLimit = 11000
+            timeSeconds = 11
+            pointsMultipler = 3
+        }
+
+
+        else{  //normal
+            guessInfo = require('../../jsonFolder/games/aniguessInfo.json') 
+            embedColor = '#0F52A3'
+            embedTitle = 'Character Appears!'
+            embedDescription = '15 seconds is all ya get! Hurry, Hurry!'
+            timeLimit = 18000
+            timeSeconds = 18
+            pointsMultipler = 1
+        }
+
+
+        //filter
+        const item = guessInfo[Math.floor(Math.random() * guessInfo.length)];
         const filter = response => {
-            return itemRare.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase())}
+            return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase())}
 
-        // embed
-        const Discord = require('discord.js');
-        const aniguessRareEmbed = new Discord.MessageEmbed()
-        .setColor('#FFD700')
+
+        //embed
+        aniguessEmbed
+        .setColor(embedColor)
         .setAuthor('Guess the character', message.author.displayAvatarURL())
-        .setTitle('**RARE CHARACTER APPEARS**')
-        .setDescription('8 seconds is all ya get! Hurry, Hurry!')
-        .setImage(itemRare.character)
-        message.channel.send(aniguessRareEmbed).then(() => {
-
-            // start timer
-            const callTime = Math.floor(Date.now() / 1000);
+        .setTitle(embedTitle)
+        .setDescription(embedDescription)
+        .setImage(item.character)
+        message.channel.send(aniguessEmbed).then(() => {
 
 
-            // collectors
-            message.channel.awaitMessages(filter, { max: 1, time: 8000, errors: ['time'] })
+            // collector
+            message.channel.awaitMessages(filter, { max: 1, time: timeLimit, errors: ['time'] }) //--three extra seconds added to help system process
                 .then(async collected => {
 
                     //calculate how much time is left
-                    const endTime = Math.floor((8-(((new Date()).getTime() / 1000) - callTime)) * 3)
+                    const endTime = Math.floor((timeSeconds-((new Date().getTime() / 1000) - callTime)) * pointsMultipler)
 
                     //variables
                     const guildId = message.guild.id
                     const userId = collected.first().author.id
                     const coins = endTime
-                    const newCoins = await economy.addCoins(guildId, userId, coins)
+                    await economy.addCoins(guildId, userId, coins)
 
-                    message.channel.send(`Yay! ${collected.first().author} got the correct answer! Here is ${coins} coins answering correctly!`)
+                    //ending
+                    message.channel.send(`Yay! ${collected.first().author} got the correct answer! Here is ${coins} coins answering correctly!`)})
 
-                })
                 .catch(collected => {
                     message.channel.send('Awww hope someone gets the answer next time~');
                 });
         })}
-        //--------------------------------------------------------------------------------------------------
-
-
-        //normal collector
-        else{
-
-        // main variables
-        const guessInfo = require('../jsonFolder/games/aniguessInfo.json');
-        const item = guessInfo[Math.floor(Math.random() * guessInfo.length)];
-        const filter = response => {
-            return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase())};
-        
-        // embed
-        const Discord = require('discord.js');
-        const aniguessEmbed = new Discord.MessageEmbed()
-        .setColor('#0F52A3')
-        .setAuthor('Guess the character', message.author.displayAvatarURL())
-        .setDescription('15 seconds is all ya get! Hurry, Hurry!')
-        .setImage(item.character)
-        message.channel.send(aniguessEmbed).then(() => {
-
-            // start timer
-            const callTime = Math.floor(Date.now() / 1000);
-
-
-            // collectors
-            message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
-                .then(async collected => {
-
-                    //calculate how much time is left
-                    const endTime = Math.round(15-(((new Date()).getTime() / 1000) - callTime))
-
-                    //variables
-                    const guildId = message.guild.id
-                    const userId = collected.first().author.id
-                    const coins = endTime
-                    const newCoins = await economy.addCoins(guildId, userId, coins)
-
-                    message.channel.send(`Yay! ${collected.first().author} got the correct answer! Here is ${coins} coins answering correctly!`)
-
-                })
-                .catch(collected => {
-                    message.channel.send('Awww hope someone gets the answer next time~');
-                });
-        }); 
-
-    } //else end
-    }
 }
