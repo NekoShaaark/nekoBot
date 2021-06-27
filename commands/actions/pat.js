@@ -35,9 +35,7 @@ module.exports = class patCommand extends Commando.Command {
         if(message.mentions.users.first()){
             userMentioned = message.mentions.users.first().username }
             
-        else{ 
-            const patPrefix = 'a.pat '
-            userMentioned = message.content.slice(patPrefix.length); }
+        else{ userMentioned = 'a' }
 
 
         // embed for pat

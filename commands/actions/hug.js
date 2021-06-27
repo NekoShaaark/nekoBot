@@ -35,9 +35,7 @@ module.exports = class hugCommand extends Commando.Command {
         if(message.mentions.users.first()){
             userMentioned = message.mentions.users.first().username }
                     
-        else{ 
-            const hugPrefix = 'a.hug '
-            userMentioned = message.content.slice(hugPrefix.length); }
+        else{ userMentioned = 'everyone' }
 
 
         // embed for hug

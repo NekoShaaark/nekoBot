@@ -35,9 +35,7 @@ module.exports = class nomCommand extends Commando.Command {
         if(message.mentions.users.first()){
             userMentioned = message.mentions.users.first().username }
                     
-        else{ 
-            const nomPrefix = 'a.nom '
-            userMentioned = message.content.slice(nomPrefix.length); }
+        else{ userMentioned = 'a cookie' }
 
 
         // embed for nom
