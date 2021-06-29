@@ -17,6 +17,7 @@ module.exports = class embedCreationv2Command extends Commando.Command {
     // runs the command
     async run(message){
 
+
         //first collector
         const filter = m1 => m1.content.includes('#') && m1.author.id === message.author.id;
         const collector1 = message.channel.createMessageCollector(filter, { max: 1 });
@@ -45,9 +46,9 @@ module.exports = class embedCreationv2Command extends Commando.Command {
 
 
             //forth collector
-            const filter = m4 => m4.content.includes('') && m4.author.id === message.author.id;
+            const filter = m4 => m4.content.includes('') && m4.author.id === message.author.id; // fix this
             const collector4 = message.channel.createMessageCollector(filter, { max: 1 });
-            message.channel.send('What thumbnail would you like? (little image in top right)');
+            message.channel.send('What thumbnail (small image in top right) would you like? (Please provide a URL)');
             collector4.on('collect', m4 => {
 	            console.log(`Collected ${m4.content} for thumbnailEmbed`);
                 var thumbnailEmbed = `${m4.content}`;
@@ -73,7 +74,7 @@ module.exports = class embedCreationv2Command extends Commando.Command {
 
 
             //sixth collector
-            const filter = m6 => m6.content.includes('https://') && m6.author.id === message.author.id;
+            const filter = m6 => m6.content.includes('') && m6.author.id === message.author.id; // fix this
             const collector6 = message.channel.createMessageCollector(filter, { max: 1 });
             message.channel.send('What image would you like? (Please provide a URL)');
             collector6.on('collect', m6 => {
@@ -88,12 +89,28 @@ module.exports = class embedCreationv2Command extends Commando.Command {
 	            console.log(`Collected ${m7.content} for footerEmbed`);
                 var footerEmbed = `${m7.content}`;
 
-            var ending
-            if(titleEmbed && descriptionEmbed && name1Embed && name2Embed && imageEmbed && footerEmbed !== 'n/a'){ ending = 'all' 
-            console.log('Ending 1 has been chosen') }
 
-            if(titleEmbed == 'n/a'){ ending = 'no title' }
-            else if(descriptionEmbed == 'n/a'){ ending = 'no description'}
+            // determined ending
+            var ending
+
+            //all ending
+            // if(titleEmbed && descriptionEmbed && thumbnailEmbed && name1Embed && name2Embed && imageEmbed && footerEmbed !== 'n/a'){ ending = 'all' 
+            // console.log('ending 1 was chosen')} move to end
+
+            //title endings
+            if(titleEmbed == 'n/a'){ ending = 'no title'
+            if(descriptionEmbed == 'n/a'){ ending = 'no title + description' 
+            if(thumbnailEmbed == 'n/a'){ ending = 'no title + description + thumbnail' 
+            if(name1Embed || name2Embed == 'n/a'){ ending = 'no title + description + thumbnail + fields' 
+            if(imageEmbed == 'n/a'){ ending = 'no title + description + thumbnail + fields + image'}}}}}
+
+            //description endings
+            else if(descriptionEmbed == 'n/a'){ ending = 'no description', console.log('no description ending')
+            if(thumbnailEmbed == 'n/a'){ ending = 'no description + thumbnail', console.log('no description + thumbnail ending')
+            if(name1Embed || name2Embed == 'n/a'){ ending = 'no description + thumbnail + fields'
+            if(imageEmbed == 'n/a'){ ending = 'no description + thumbnail + fields + image'}}}}
+
+
             else if(thumbnailEmbed == 'n/a'){ ending = 'no thumbnail'}
             else if(name1Embed == 'n/a'){ ending = 'no fields'}
             else if(name2Embed == 'n/a'){ ending = 'no fields'}
@@ -189,6 +206,74 @@ module.exports = class embedCreationv2Command extends Commando.Command {
             .addFields( {name: name1Embed , value: name2Embed} )
             .setImage(imageEmbed)
             message.channel.send(newEmbed); }
+
+
+            //multi endings // title endings
+            else if(ending == 'no title + description'){
+                const Discord = require('discord.js');
+                const newEmbed = new Discord.MessageEmbed()
+                .setColor(colorEmbed)
+                .setThumbnail(thumbnailEmbed)
+                .addFields( {name: name1Embed , value: name2Embed} )
+                .setImage(imageEmbed)
+                .setFooter(footerEmbed);
+                message.channel.send(newEmbed); }
+
+            else if(ending == 'no title + description + thumbnail'){
+                const Discord = require('discord.js');
+                const newEmbed = new Discord.MessageEmbed()
+                .setColor(colorEmbed)
+                .addFields( {name: name1Embed , value: name2Embed} )
+                .setImage(imageEmbed)
+                .setFooter(footerEmbed);
+                message.channel.send(newEmbed); }
+                
+            else if(ending == 'no title + description + thumbnail + fields'){
+                const Discord = require('discord.js');
+                const newEmbed = new Discord.MessageEmbed()
+                .setColor(colorEmbed)
+                .setImage(imageEmbed)
+                .setFooter(footerEmbed);
+                message.channel.send(newEmbed); }
+
+            else if(ending == 'no title + description + thumbnail + fields + image'){
+                const Discord = require('discord.js');
+                const newEmbed = new Discord.MessageEmbed()
+                .setColor(colorEmbed)
+                .setFooter(footerEmbed);
+                message.channel.send(newEmbed); }
+
+
+            //multi endings // description endings
+
+            else if(ending == 'no description + thumbnail'){
+                const Discord = require('discord.js');
+                const newEmbed = new Discord.MessageEmbed()
+                .setColor(colorEmbed)
+                .setTitle(titleEmbed)
+                .addFields( {name: name1Embed , value: name2Embed} )
+                .setImage(imageEmbed)
+                .setFooter(footerEmbed);
+                message.channel.send(newEmbed); }
+
+            else if(ending == 'no description + thumbnail + fields'){
+                const Discord = require('discord.js');
+                const newEmbed = new Discord.MessageEmbed()
+                .setColor(colorEmbed)
+                .setTitle(titleEmbed)
+                .setImage(imageEmbed)
+                .setFooter(footerEmbed);
+                message.channel.send(newEmbed); }
+
+            else if(ending == 'no description + thumbnail + fields + image'){
+                const Discord = require('discord.js');
+                const newEmbed = new Discord.MessageEmbed()
+                .setColor(colorEmbed)
+                .setTitle(titleEmbed)
+                .setFooter(footerEmbed);
+                message.channel.send(newEmbed); }
+
+
 
 
 
