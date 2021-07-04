@@ -20,6 +20,8 @@ module.exports = class nomCommand extends Commando.Command {
 
         //variables
         var userMentioned
+        var nomPrefix
+        const userContent = message.content.split(' ')
 
 
         //nom link
@@ -34,8 +36,17 @@ module.exports = class nomCommand extends Commando.Command {
         //determines if user was pinged or not
         if(message.mentions.users.first()){
             userMentioned = message.mentions.users.first().username }
-                    
-        else{ userMentioned = 'a cookie' }
+              
+        //check for string after prefix
+        else{
+            if(userContent[1]){
+
+            //string after prefix
+            nomPrefix = userContent[0] + ' '
+            userMentioned = message.content.slice(nomPrefix.length)}
+
+            //no string after prefix
+            else{ userMentioned = 'a cookie' }}
 
 
         // embed for nom

@@ -20,6 +20,8 @@ module.exports = class patCommand extends Commando.Command {
 
         //variables
         var userMentioned
+        var patPrefix
+        const userContent = message.content.split(' ')
 
 
         //pat link
@@ -35,7 +37,16 @@ module.exports = class patCommand extends Commando.Command {
         if(message.mentions.users.first()){
             userMentioned = message.mentions.users.first().username }
             
-        else{ userMentioned = 'a' }
+        //check for string after prefix
+        else{
+            if(userContent[1]){
+
+            //string after prefix
+            patPrefix = userContent[0] + ' '
+            userMentioned = message.content.slice(patPrefix.length)}
+
+            //no string after prefix
+            else{ userMentioned = 'a' }}
 
 
         // embed for pat

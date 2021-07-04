@@ -20,6 +20,8 @@ module.exports = class hugCommand extends Commando.Command {
 
         //variables
         var userMentioned
+        var hugPrefix
+        const userContent = message.content.split(' ')
 
 
         //hug link
@@ -34,8 +36,17 @@ module.exports = class hugCommand extends Commando.Command {
         //determines if user was pinged or not
         if(message.mentions.users.first()){
             userMentioned = message.mentions.users.first().username }
-                    
-        else{ userMentioned = 'everyone' }
+             
+        //check for string after prefix
+        else{
+            if(userContent[1]){
+
+            //string after prefix
+            hugPrefix = userContent[0] + ' '
+            userMentioned = message.content.slice(hugPrefix.length)}
+
+            //no string after prefix
+            else{ userMentioned = 'everyone' }}
 
 
         // embed for hug
