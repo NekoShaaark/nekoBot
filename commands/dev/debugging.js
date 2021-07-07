@@ -25,6 +25,7 @@ module.exports = class debuggingCommand extends Commando.Command {
             {name: 'Better Embed Creator', value: 'Make better user experience and make code look little bit neater'},
             {name: '--------------------------------------------------------------------------------', value: '\u200b'},
             {name: 'Everything else:', value: '-------------------'},
+            {name: 'Syntax for Sheets', value: 'Syntax for explaning what commands of sheets command(s) are'},
             {name: 'Cloud Hosting', value: 'Cloud Hosting using Google App Engine'},
             //{name: '​\u200b', value: '​\u200b'}, makes the line blank
             {name: 'Syntax Implementation', value: 'If user sends wrong/invalid command/syntax of command, tell user what command Syntax is (as shown below)'}
