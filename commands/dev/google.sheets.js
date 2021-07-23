@@ -17,8 +17,8 @@ module.exports = class googleSheetsCommand extends Commando.Command {
       //variables
       const messageContent = (message.content).toLowerCase()
 
-      const viewArray = ['view', '-v', 'v']
-      const appendArray = ['append', '-a', 'a', 'add', '-add']
+      const viewArray = ['view', '-v',]
+      const appendArray = ['append', '-a', 'add', '-add']
 
       const sheetsView = require('./sheets/view')
       const sheetsAppend = require('./sheets/append')

@@ -27,10 +27,8 @@ const authClient = new google.auth.GoogleAuth({
       auth: authClient,
     };
 
-
 // sheet picker
-
-//sheet1
+    //sheet1
     if(messageContent.includes('sheet1')){ 
         request.range = 'Sheet1!1:1'
         name.range = 'Sheet1!2:2'
@@ -44,7 +42,7 @@ const authClient = new google.auth.GoogleAuth({
         responseRequest = (await sheets.spreadsheets.values.get(request)).data.values;
         responseName = (await sheets.spreadsheets.values.get(name)).data.values; }
 
-      //else none
+    //else none
     else{ message.channel.send('Please specify a sheet or nu data nom.') 
         return; }
             
@@ -62,5 +60,5 @@ const authClient = new google.auth.GoogleAuth({
     //-----------------
 
 
-      } catch (err) { console.error(err); }
-} main(); }
+    } catch (err) { console.error(err); }}
+    main()}
