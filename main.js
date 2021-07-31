@@ -1,5 +1,6 @@
 require('dotenv').config();
 const path = require('path');
+const moveMsg = require('./misc/suggestionMover');
 const Commando = require('discord.js-commando');
 
 
@@ -32,8 +33,14 @@ client.on('ready', async () => {
         name: 'Shark Simulator',
         type: 'PLAYING'
         }});
-})
 
+
+    // suggestion/message mover
+    client.on('message', message => {
+        if(message.channel.id === '853628188881190923'){ 
+            moveMsg(message);
+        }})
+})
 
 
 // login with token from .env
