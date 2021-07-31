@@ -18,21 +18,16 @@ module.exports = class explosionCommand extends Commando.Command {
     // runs the command
     async run(message){
 
-        //random number generator
-        var rating = Math.floor(Math.random() * 3) + 1;
-        var explosionNum
-        // will pick a random number between 3 and 25
-
-        //number determining what explosion will be shown
-        if(rating == 1){ explosionNum = ('https://cdn.discordapp.com/attachments/839881156592795659/839881353943842896/MeguminExplosion.gif') }
-        else if(rating == 2){ explosionNum = ('https://cdn.discordapp.com/attachments/839881156592795659/839881415927922698/MeguminExplosion2.gif'); }
-        else if(rating == 3){ explosionNum = ('https://cdn.discordapp.com/attachments/839881156592795659/839881439016517653/MeguminExplosion3.gif'); }
-
+        //explosion picker
+        const explosionLinks = require('../../jsonFolder/misc/explosion.json')
+        const rating = explosionLinks[Math.floor(Math.random() * explosionLinks.length)]
+        
+        //explosion embed
         const Discord = require('discord.js');
         const explosiveEmbed = new Discord.MessageEmbed()
         .setColor('#C20909')
         .setTitle('Explooooosion!')
-        .setImage(explosionNum)
+        .setImage(rating.explosion)
 
         message.channel.send(explosiveEmbed);
 

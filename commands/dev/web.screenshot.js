@@ -3,10 +3,14 @@ module.exports = class webscreenshotCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'web.screenshot',
-            aliases: ['sc', 'screenshot'],
+            aliases: ['sc', 'screenshot', 'scrape'],
             group: 'dev',
             memberName: 'web.screenshot',
-            description: 'Scrapes website pages'
+            description: 'Scrapes website pages',
+            throttling: {
+                usages: 1,
+                duration: 5
+            }
         })
     }
 
@@ -35,7 +39,7 @@ module.exports = class webscreenshotCommand extends Commando.Command {
         return; }
 
 
-        //generate/scrap image from given website
+        //generate/scrape image from given website
         (async () => {
             const browser = await puppeteer.launch();
             const page = await browser.newPage();

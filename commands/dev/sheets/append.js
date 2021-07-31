@@ -6,8 +6,6 @@ module.exports = async(message) => {
 
 // variables
 const messageContent = (message.content).toLowerCase()
-var responseRequest
-var responseName
 
 var determinedRange
 var determinedDimension

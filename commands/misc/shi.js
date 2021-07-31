@@ -5,7 +5,8 @@ module.exports = class shiCommand extends Commando.Command {
             name: 'shi',
             group: 'misc',
             memberName: 'shi',
-            description: 'shi'
+            description: 'shi',
+            hidden: 'true'
         })
     }
 

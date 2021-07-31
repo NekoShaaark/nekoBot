@@ -5,7 +5,8 @@ module.exports = class shicretCommand extends Commando.Command {
             name: 'shicret',
             group: 'misc',
             memberName: 'shicret',
-            description: 'shicret'
+            description: 'shicret',
+            hidden: 'true'
         })
     }
 

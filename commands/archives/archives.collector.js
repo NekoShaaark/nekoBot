@@ -12,6 +12,7 @@ module.exports = class ArchivedCollector extends Commando.Command {
 
     // runs the command
     async run(message){
+
         // `m` is a message object that will be passed through the filter function
         const filter = m => m.content.includes('') && m.author.id === message.author.id;
         const collector = message.channel.createMessageCollector(filter, { max: 1, time: 10000 });
@@ -34,6 +35,5 @@ module.exports = class ArchivedCollector extends Commando.Command {
             message.channel.send('Message size collected: ' + messageSizeCollected);
         });
 
-        message.channel.send('Messages collected testy: ' + messagesCollected)
     }
 }

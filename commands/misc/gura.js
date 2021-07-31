@@ -14,7 +14,13 @@ module.exports = class guraCommand extends Commando.Command {
     // runs the command
     async run(message){
 
-        message.channel.send('https://tenor.com/view/gawr-gura-wink-gif-18773599')
+        const Discord = require('discord.js');
+        const guraWinkEmbed = new Discord.MessageEmbed()
+        .setColor('#0860D3')
+        .setImage('https://tenor.com/view/gawr-gura-wink-gif-18773599')
+        .setFooter('Shaaark🦈');
+
+        message.channel.send(guraWinkEmbed);
 
     }
 }
