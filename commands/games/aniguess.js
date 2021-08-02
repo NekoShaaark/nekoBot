@@ -12,7 +12,8 @@ module.exports = class animeGameCommand extends Commando.Command {
             throttling: {
                 usages: 1,
                 duration: 5
-            }
+            },
+            examples: ['a.aniguess <anime-name>']
         })
     }
 

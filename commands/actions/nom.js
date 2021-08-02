@@ -10,7 +10,8 @@ module.exports = class nomCommand extends Commando.Command {
             throttling: {
                 usages: 1,
                 duration: 3
-            }
+            },
+            examples: ['a.nom <user>']
         })
     }
 

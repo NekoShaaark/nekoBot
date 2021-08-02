@@ -6,7 +6,9 @@ module.exports = class googleSheetsCommand extends Commando.Command {
             aliases: ['gs'],
             group: 'dev',
             memberName: 'google.sheets',
-            description: 'Google sheets api testy command'
+            description: 'Neko sheets nom',
+            details: 'View or append the specified google sheets sheet using the googlesheetsapi',
+            examples: ['a.google.sheets <view> <sheet-name>', 'a.google.sheets <append> <sheet-name>']
         })
     }
 

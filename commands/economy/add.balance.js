@@ -8,7 +8,8 @@ module.exports = class exeCommand extends Commando.Command {
             group: 'economy',
             memberName: 'add.balance',
             description: 'Add to @user account of coins (admin-only)',
-            ownerOnly: true
+            ownerOnly: true,
+            examples: ['a.add.balance <user> <amount>']
         })
     }
 
