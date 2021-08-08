@@ -15,13 +15,14 @@ module.exports = async(message) => {
     const fishRarity = userContent[3] //which rarity to sell
 
     const fishAmount = userContent[2] - (userContent[2] * 2) //how much to take away from user when sold
-    const fishSold = fish.commonFish - fishCaught //how many fish are left after specified amount is sold
+    var fishSold //how many fish are left after specified amount is sold
 
 
     //coin calculation
-    if(fishRarity.toLowerCase() == 'common'){ coins = 3 * fishCaught }
-    else if(fishRarity.toLowerCase() == 'rare'){ coins = 12 * fishCaught }
-    else if(fishRarity.toLowerCase() == 'epic'){ coins = 20 * fishCaught }
+    if(fishRarity.toLowerCase() == 'common'){ coins = 3 * fishCaught, fishSold = fish.commonFish - fishCaught }
+    else if(fishRarity.toLowerCase() == 'rare'){ coins = 12 * fishCaught, fishSold = fish.rareFish - fishCaught }
+    else if(fishRarity.toLowerCase() == 'epic'){ coins = 20 * fishCaught, fishSold = fish.epicFish - fishCaught }
+
 
     //main code
     message.reply(`Do ya wanna sell ${fishCaught} ${fishRarity} fish?`)
