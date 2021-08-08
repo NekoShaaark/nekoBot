@@ -5,7 +5,8 @@ module.exports = class exeCommand extends Commando.Command {
             name: 'exe',
             group: 'dev',
             memberName: 'exe',
-            description: 'Quick way to test stuff'
+            description: 'Quick way to test stuff',
+            details: 'is for testy',
         })
     }
 
@@ -13,7 +14,7 @@ module.exports = class exeCommand extends Commando.Command {
     // runs the command
     async run(message){
 
-      //stuff here
+        //stuff here
 
   }
 }

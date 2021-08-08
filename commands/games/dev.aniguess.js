@@ -23,8 +23,8 @@ module.exports = class animeGameCommand extends Commando.Command {
 
 
         //variables
-        var rareRating = Math.floor(Math.random() * 25) //4% chance
-        var ultraRareRating = Math.floor(Math.random() * 250) //0.2% chance
+        const rareRating = Math.floor(Math.random() * 25) //4% chance
+        const ultraRareRating = Math.floor(Math.random() * 250) //0.2% chance
 
         message.channel.send(`ultra: ${ultraRareRating}`)
         message.channel.send(`rare: ${rareRating}`)
@@ -35,16 +35,17 @@ module.exports = class animeGameCommand extends Commando.Command {
         var embedDescription
         const aniguessEmbed = new Discord.MessageEmbed()
 
-        const callTime = Math.floor(Date.now() / 1000)
         var timeLimit
         var timeSeconds
         var pointsMultipler
+        const callTime = Math.floor(Date.now() / 1000)
 
+        
         //anime picker
         var animePath
-        var animeArray = ['sword-art-online', 'konosuba']
-        var animePicked = Math.floor(Math.random() * animeArray.length)
-        var messageContent = (message.content).toLowerCase()
+        const animeArray = ['sword-art-online', 'konosuba']
+        const animePicked = Math.floor(Math.random() * animeArray.length)
+        const messageContent = (message.content).toLowerCase()
 
         if(messageContent.includes('sword-art-online')){ animePath = 'sword-art-online' } //sword art online
         else if(messageContent.includes('konosuba')){ animePath = 'konosuba' } //konosuba

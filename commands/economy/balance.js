@@ -17,6 +17,7 @@ module.exports = class exeCommand extends Commando.Command {
 
         // variables
         const target = message.mentions.users.first() || message.author
+        const userMentioned = message.mentions.users.first()
         const guildId = message.guild.id
 
         const userId = target.id
@@ -25,7 +26,6 @@ module.exports = class exeCommand extends Commando.Command {
         // coin amount
         //determines if user was pinged or not
         if(message.mentions.users.first()){
-            const userMentioned = message.mentions.users.first().username
             message.channel.send(`${userMentioned} has ${coins} coins`) }
 
         else{
