@@ -1,10 +1,10 @@
 const Commando = require('discord.js-commando')
 const economy = require('../../misc/economy')
-module.exports = class exeCommand extends Commando.Command {
+module.exports = class addbalanceCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'add.balance',
-            aliases: ['addbal'],
+            aliases: ['addbalance', 'add-balance', 'addbal', 'add.bal', 'add-bal'],
             group: 'economy',
             memberName: 'add.balance',
             description: 'Add to @user account of coins (admin-only)',

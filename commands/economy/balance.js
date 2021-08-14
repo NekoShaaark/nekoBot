@@ -1,10 +1,10 @@
 const Commando = require('discord.js-commando')
 const economy = require('../../misc/economy')
-module.exports = class exeCommand extends Commando.Command {
+module.exports = class balanceCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'balance',
-            aliases: ['bal'],
+            aliases: ['bal', 'gold'],
             group: 'economy',
             memberName: 'balance',
             description: 'Check balance for coins'
@@ -16,20 +16,21 @@ module.exports = class exeCommand extends Commando.Command {
     async run(message){
 
         // variables
-        const target = message.mentions.users.first() || message.author
         const userMentioned = message.mentions.users.first()
-        const guildId = message.guild.id
+        const target = userMentioned || message.author
 
+        const guildId = message.guild.id
         const userId = target.id
+        
         const coins = await economy.getCoins(guildId, userId)
 
         // coin amount
         //determines if user was pinged or not
-        if(message.mentions.users.first()){
-            message.channel.send(`${userMentioned} has ${coins} coins`) }
+        if(userMentioned){
+            message.channel.send(`${userMentioned} has ${coins} coins <:nekosharkCoin:874230937385324544>`) }
 
         else{
-            message.channel.send(`Ya have ${coins} amount of coins`) }
+            message.channel.send(`Ya have ${coins} amount of coins <:nekosharkCoin:874230937385324544>`) }
 
     }
 }
