@@ -2,21 +2,31 @@ const mongoose = require('mongoose')
 
 const reqString = {
     type: String,
-    required: true
-}
+    required: true }
 
-const reqFish = {
+const reqNum = {
     type: Number,
-    default: 0
-}
+    default: 0 }
+
+const reqBool = {
+    type: Boolean,
+    default: false }
+
 
 const inventorySchema = mongoose.Schema({
     guildId: reqString,
     userId: reqString,
     fish: {
-        commonFish: reqFish,
-        rareFish: reqFish,
-        epicFish: reqFish
+        commonFish: reqNum,
+        rareFish: reqNum,
+        epicFish: reqNum
+    },
+    rods: { 
+        commonRod: reqBool,
+        rareRod: reqBool,
+        epicRod: reqBool,
+        ultraRod: reqBool,
+        equippedRod: reqString
     }
 })
 

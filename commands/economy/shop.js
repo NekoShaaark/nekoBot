@@ -8,7 +8,7 @@ module.exports = class shopCommand extends Commando.Command {
             memberName: 'shop',
             description: 'Shop functions',
             details: 'Collection of functions that can be accessed via the correct syntax (see examples)',
-            examples: ['a.shop -view', 'a.shop -sell <quantity> <rarity>', 'a.shop -buy <quantity> <rarity>'],
+            examples: ['a.shop -view', 'a.shop -sell <quantity> <rarity>', '', 'a.shop -buy fish <quantity> <rarity>', 'a.shop -buy rod <rarity>'],
             throttling: {
                 usages: 1,
                 duration: 5

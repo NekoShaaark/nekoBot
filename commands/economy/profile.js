@@ -16,6 +16,7 @@ module.exports = class profileCommand extends Commando.Command {
 
         //variables
         const economy = require('../../misc/economy')
+        const inventory = require('../../misc/inventory')
         const Discord = require('discord.js')
 
         const userMentioned = message.mentions.users.first()
@@ -24,20 +25,29 @@ module.exports = class profileCommand extends Commando.Command {
         const guildId = message.guild.id
         const userId = target.id
 
+        var rod
         const coins = await economy.getCoins(guildId, userId)
+        .then(rod = await inventory.getRod(guildId, userId)) //using .then(function) because topology will close otherwise
+
+
+        //rod equipped
+        //capitize first Letter function
+        function capitalizeFirstLetter(string) { return string.charAt(0).toUpperCase() + string.slice(1) }
+        const rodRarity = `${capitalizeFirstLetter(rod.equippedRod)} Rod`
+
 
         
-        //embed
+        //profile
         const profileEmbed = new Discord.MessageEmbed()
         .setColor('#0F52A3')
         .setAuthor(`${target.username}'s Profile`, target.displayAvatarURL())
         .addFields(
             {name: 'Gold <:nekosharkCoin:874230937385324544>', value: coins, inline: true},
-            {name: 'Cookies :cookie:', value: 'ALL DA COOKIES', inline: true}
+            {name: 'Cookies :cookie:', value: 'ALL DA COOKIES', inline: true},
+            {name: 'Equipped Fishing Rod :fishing_pole_and_fish:', value: rodRarity}
         )
         .setFooter(`User ID: ${userId}`)
-
+        
         message.channel.send(profileEmbed)
-
   }
 }

@@ -9,7 +9,7 @@ module.exports = class fishCommand extends Commando.Command {
             details: "Chance to get different types of fish that will be added to the user's personal inventory",
             throttling: {
                 usages: 1,
-                duration: 10
+                duration: 5
             }
         })
     }
@@ -19,36 +19,64 @@ module.exports = class fishCommand extends Commando.Command {
     async run(message){
 
         //variables
-        const commonRating = Math.floor(Math.random() * 3) //33% chance
-        const rareRating = Math.floor(Math.random() * 4) //25% chance
-        const epicRating = Math.floor(Math.random() * 20) //5% chance
-
-        var fishRarity
-        var fishCaught = 1 //default
-
         const inventory = require('../../misc/inventory')
 
         const guildId = message.guild.id
         const userId = message.author.id
-        await inventory.getFish(guildId, userId)
 
-        //rarity
-        if(epicRating == 1){  //epic
-            fishRarity = "epic"
+        const rod = await inventory.getRod(guildId, userId)
+        var rodEquipped = rod.equippedRod
+
+
+        //rod rarity and chances
+        var epicCatchChance
+        var rareCatchChance
+        var commonCatchChance
+        
+        //ultra rod
+        if(rodEquipped == 'ultra'){ 
+            epicCatchChance = 4 //25% chance
+            rareCatchChance = 3 //33% chance
+            commonCatchChance = 2 //50% chance
         }
 
-        else if(rareRating == 1){  //rare
-            fishRarity = "rare"
+        //epic rod
+        else if(rodEquipped == 'epic'){ 
+            epicCatchChance = 5 //20% chance
+            rareCatchChance = 3 //33% chance
+            commonCatchChance = 2 //50% chance
         }
 
-        else if(commonRating == 1){  //common
-            fishRarity = "common"
-        } 
-
-        else{  //nothing
-            message.channel.send(`Awww ${message.author.username} didn't catch anything dis time, better luck next time~`)
-            return;
+        //rare rod
+        else if(rodEquipped == 'rare'){ 
+            epicCatchChance = 10 //10% chance
+            rareCatchChance = 3 //33% chance
+            commonCatchChance = 2 //50% chance
         }
+
+        //common rod
+        else{ 
+            epicCatchChance = 20 //5% chance
+            rareCatchChance = 4 //25% chance
+            commonCatchChance = 3 //33% chance
+        }
+
+
+        //rarity chance
+        const epicRating = Math.floor(Math.random() * epicCatchChance)
+        const rareRating = Math.floor(Math.random() * rareCatchChance)
+        const commonRating = Math.floor(Math.random() * commonCatchChance)
+
+        var fishRarity
+        var fishCaught = 1 //default
+
+
+        //rarity picker
+        if(epicRating == 1){ fishRarity = "epic" } //epic
+        else if(rareRating == 1){ fishRarity = "rare" } //rare
+        else if(commonRating == 1){ fishRarity = "common" } //common
+
+        else{ message.channel.send(`Awww ${message.author.username} didn't catch anything dis time, better luck next time~`); return } //none
 
 
         //ending
