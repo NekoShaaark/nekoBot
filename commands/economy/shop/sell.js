@@ -49,12 +49,12 @@ module.exports = async(message) => {
 
             if(fishSold > -1){ //if was > 0 wouldn't allow fish to be sold until 0, would stop at 1
                 inventory.addFish(guildId, userId, fishRarity, fishAmount)
-                economy.addCoins(guildId, userId, coins)
-                message.reply(`Sold ${fishSelling} ${fishRarity} fish for ${coins} amount of coins`)
+                economy.addCurrency(guildId, userId, coins)
+                message.reply(`Sold ${fishSelling} ${fishRarity} fish for ${coins} amount of coins!`)
                 return; }
 
             else{
-                message.channel.send("Sowwy, ya don't have dat many fish") 
+                message.channel.send("Sowwy, ya don't have dat many fish~") 
                 return; }
             }
 

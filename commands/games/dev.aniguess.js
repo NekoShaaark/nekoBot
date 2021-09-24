@@ -123,7 +123,7 @@ module.exports = class animeGameCommand extends Commando.Command {
                     const guildId = message.guild.id
                     const userId = collected.first().author.id
                     const coins = endTime
-                    await economy.addCoins(guildId, userId, coins)
+                    await economy.addCurrency(guildId, userId, coins, 0)
 
                     //ending
                     message.channel.send(`Yay! ${collected.first().author} got the correct answer! Here is ${coins} coins answering correctly!`)})

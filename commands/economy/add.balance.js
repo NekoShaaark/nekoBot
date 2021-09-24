@@ -35,7 +35,10 @@ module.exports = class addbalanceCommand extends Commando.Command {
         const userId = mention.id
         const userMentioned = message.mentions.users.first()
 
-        const newCoins = await economy.addCoins(guildId, userId, coins)
+        //add specified amount of coins to user's balance then GET
+        var getCurrency
+        await economy.addCurrency(guildId, userId, coins, 0).then(getCurrency = await economy.getCurrency(guildId, userId)) 
+        const newCoins = getCurrency.coins
 
         message.reply(`Ya gave ${userMentioned} ${coins} coin(s)! Yay! The user now has ${newCoins} coin(s)!`)
     }

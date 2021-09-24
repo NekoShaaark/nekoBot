@@ -1,13 +1,16 @@
 module.exports = async(message) => {
 
+
+    //variables
     const inventory = require('../../../misc/inventory')
     const economy = require('../../../misc/economy')
 
     const guildId = message.guild.id
     const userId = message.author.id
-    const coinsOwned = await economy.getCoins(guildId, userId)
 
     var coinsRequired
+    const currency = await economy.getCurrency(guildId, userId)  //console
+    const coinsOwned = currency.coins
 
     const userContent = message.content.split(' ')
     const itemBuying = userContent[2] //which item to buy (fish/rod)
@@ -15,8 +18,6 @@ module.exports = async(message) => {
 
     const fishBuying = userContent[3] //how many fish to buy
     const fishRarity = userContent[4] //which rarity to buy
-
-    console.log(userContent)
 
 
     //check if user has specified either fish or rod
@@ -50,7 +51,7 @@ module.exports = async(message) => {
 
 
     //main code (fish)
-    if(itemBuying == 'fish'){ console.log('problem here')
+    if(itemBuying == 'fish'){
     message.reply(`Do ya wanna buy ${fishBuying} ${fishRarity} fish for ${coinsRequired} coins?`)
     .then(sentMessage => {
         sentMessage.react('✅')
@@ -71,12 +72,12 @@ module.exports = async(message) => {
 
             if(coinsOwned > coinsRequired - 1){ //minus 1 so can get coinsOwned down to 0
                 inventory.addFish(guildId, userId, fishRarity, fishBuying)
-                economy.addCoins(guildId, userId, coinsAmount)
-                message.reply(`Bought ${fishBuying} ${fishRarity} fish for ${coinsRequired} amount of coins`)
+                economy.addCurrency(guildId, userId, coinsAmount, 0)
+                message.reply(`Bought ${fishBuying} ${fishRarity} fish for ${coinsRequired} amount of coins!`)
                 return; }
 
             else{
-                message.channel.send("Sowwy, ya don't have enough monies to buy dat many fish")
+                message.channel.send("Sowwy, ya don't have enough monies to buy dat many fish~")
                 return; }
             }
 
@@ -108,10 +109,10 @@ module.exports = async(message) => {
 
             if(coinsOwned > coinsRequired - 1){ //minus 1 so can get coinsOwned down to 0
                 inventory.obtainRod(guildId, userId, itemRarity)
-                economy.addCoins(guildId, userId, coinsAmount)
-                message.reply(`Bought ${itemBuying} ${itemRarity} fish for ${coinsRequired} amount of coins`); return }
+                economy.addCurrency(guildId, userId, coinsAmount, 0)
+                message.reply(`Bought ${itemBuying} ${itemRarity} fish for ${coinsRequired} amount of coins!`); return }
 
-            else{ message.channel.send("Sowwy, ya don't have enough monies to buy dat fishing rod"); return }}
+            else{ message.channel.send("Sowwy, ya don't have enough monies to buy dat fishing rod~"); return }}
 
         else{ return; }
       })

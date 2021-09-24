@@ -25,9 +25,18 @@ module.exports = class profileCommand extends Commando.Command {
         const guildId = message.guild.id
         const userId = target.id
 
+
+        //dynamic method
+        const profileObject = {
+            currency: () => economy.getCurrency(guildId, userId),
+            rod: () => inventory.getRod(guildId, userId)
+        }
+
+        //method variables
         var rod
-        const coins = await economy.getCoins(guildId, userId)
-        .then(rod = await inventory.getRod(guildId, userId)) //using .then(function) because topology will close otherwise
+        const currency = await profileObject['currency']().then(rod = await profileObject['rod']());
+        const coins = currency.coins
+        const cookies = currency.cookies //possibility of topology overlapping causing error (FIX THIS)
 
 
         //rod equipped
@@ -42,8 +51,8 @@ module.exports = class profileCommand extends Commando.Command {
         .setColor('#0F52A3')
         .setAuthor(`${target.username}'s Profile`, target.displayAvatarURL())
         .addFields(
-            {name: 'Gold <:nekosharkCoin:874230937385324544>', value: coins, inline: true},
-            {name: 'Cookies :cookie:', value: 'ALL DA COOKIES', inline: true},
+            {name: 'Coins <:nekosharkCoin:874230937385324544>', value: coins, inline: true},
+            {name: 'Cookies :cookie:', value: cookies, inline: true},
             {name: 'Equipped Fishing Rod :fishing_pole_and_fish:', value: rodRarity}
         )
         .setFooter(`User ID: ${userId}`)

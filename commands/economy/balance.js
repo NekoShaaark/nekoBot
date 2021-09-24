@@ -22,7 +22,8 @@ module.exports = class balanceCommand extends Commando.Command {
         const guildId = message.guild.id
         const userId = target.id
         
-        const coins = await economy.getCoins(guildId, userId)
+        const getCurrency = await economy.getCurrency(guildId, userId)
+        const coins = getCurrency.coins
 
         // coin amount
         //determines if user was pinged or not
